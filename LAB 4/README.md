@@ -101,7 +101,7 @@ Example Inbound Rules:
 | Protocol | Port | Source |
 |---|---|---|
 | HTTP | 80 | 0.0.0.0/0 |
-| SSH | 22 | Your IP |
+| SSH | 22 | 0.0.0.0/0 |
 | MySQL | 3306 | Web ECS CIDR |
 
 Outbound: allow all (default)
