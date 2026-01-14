@@ -1,127 +1,131 @@
-☁️ Huawei Cloud High-Availability LAMP Deployment Lab
+# ☁️ Huawei Cloud High-Availability LAMP Deployment Lab
 
-This project demonstrates the deployment of a scalable and highly available web application environment running on a LAMP stack (Linux, Apache, MySQL, PHP) using Huawei Cloud services.
+This project demonstrates the deployment of a scalable and highly available web application environment running on a **LAMP stack** (Linux, Apache, MySQL, PHP) using **Huawei Cloud** services.  
 The architecture separates database and application tiers, supports automatic scaling, and balances traffic across multiple ECS instances.
 
-🚀 Project Architecture Overview
+---
+
+## 🚀 Project Architecture Overview
 
 This lab includes:
 
-VPC with subnets & routing
+- VPC with subnets & routing
+- ECS instances for Web (Apache + PHP)
+- ECS instance for Database (MySQL)
+- Elastic Load Balancer (ELB)
+- Auto Scaling policies for ECS
+- Cloud Eye for metrics & monitoring
+- Security Group rules
+- Public Access via Load Balancer
 
-ECS instances for Web (Apache + PHP)
+---
 
-ECS instance for Database (MySQL)
+## 🌐 Core Features
 
-Elastic Load Balancer (ELB)
+✔ LAMP stack deployment on Huawei Cloud  
+✔ Separate ECS nodes for Database & Web services  
+✔ Automatic scaling of Web ECS nodes based on traffic  
+✔ Load-balanced incoming HTTP requests via ELB  
+✔ Continuous monitoring via Cloud Eye  
+✔ Public accessibility over the internet  
 
-Auto Scaling policies for ECS
+---
 
-Cloud Eye for metrics & monitoring
+## 🧱 Huawei Services Used
 
-Security Group rules
+| Service | Purpose |
+|---|---|
+| VPC | Network topology & subnets |
+| ECS | LAMP web servers and DB node |
+| ELB | Traffic load balancing |
+| Auto Scaling | Adjust ECS count based on demand |
+| Cloud Eye | Monitoring & metric visualization |
+| Security Groups | Firewall & inbound rules |
 
-Public Access via Load Balancer
+---
 
-🌐 Core Features
+## 🏗️ Project Steps (High-Level Summary)
 
-✔ LAMP stack deployment on Huawei Cloud
-✔ Separate ECS nodes for Database & Web services
-✔ Automatic scaling of Web ECS nodes based on traffic
-✔ Load-balanced incoming HTTP requests via ELB
-✔ Continuous monitoring via Cloud Eye
-✔ Public accessibility over the internet
+### **1. VPC Setup**
+- Create a VPC and required Subnets
+- Configure routing & network access
+- Assign Security Groups
 
-🧱 Huawei Services Used
-Service	Purpose
-VPC	Network topology & subnets
-ECS	LAMP web servers and DB node
-ELB	Traffic load balancing
-Auto Scaling	Adjust ECS count based on demand
-Cloud Eye	Monitoring & metric visualization
-Security Groups	Firewall & inbound rules
-🏗️ Project Steps (High-Level Summary)
-1. VPC Setup
+### **2. ECS Deployment**
+Deploy the compute resources:
+- ECS #1 → Web Server (Apache + PHP)
+- ECS #2 → Database Server (MySQL)
 
-Create a VPC and required Subnets
+Installed Components:
+- Apache (httpd)
+- PHP
+- MySQL (on DB ECS)
 
-Configure routing & network access
+### **3. LAMP Configuration**
+Configure:
+- Apache virtual hosts
+- PHP runtime
+- MySQL database authentication
+- Application DB connection
 
-Assign Security Groups
+Verify:
+- PHP info page
+- MySQL connectivity from Web ECS
 
-2. ECS Deployment
+### **4. High Availability Setup**
+Configure high availability architecture:
+- Create Elastic Load Balancer
+- Register Web ECS instances
+- Configure Auto Scaling policies:
+  - Scale Out when CPU/traffic increases
+  - Scale In when load decreases
 
-ECS #1 (Web Server)
+### **5. Public Website Validation**
+- Access website via ELB Public Endpoint
+- Verify balanced traffic distribution
+- Confirm database read/write operations
 
-ECS #2 (Database Server)
+### **6. Monitoring Resources**
+Monitor using **Cloud Eye**:
+- ECS CPU/Memory usage
+- Network throughput
+- Scaling activities
+- Load balancer performance
 
-Install & configure:
+---
 
-Apache (httpd)
+## 🔐 Security Group Configuration
 
-PHP
+Example Inbound Rules:
 
-MySQL (on DB ECS)
-
-3. LAMP Configuration
-
-Install LAMP packages
-
-Configure PHP + Apache
-
-Connect App → MySQL DB
-
-Test DB connectivity
-
-4. High Availability via ELB + AS
-
-Create Elastic Load Balancer
-
-Register Web ECS instances
-
-Configure Auto Scaling:
-
-Scale Out on high CPU/traffic
-
-Scale In on low traffic
-
-5. Public Website Validation
-
-Access the website via ELB public endpoint
-
-Verify request distribution between nodes
-
-6. Monitoring Resources
-
-Use Cloud Eye to monitor:
-
-CPU Usage
-
-Network traffic
-
-Scaling actions
-
-ECS health
-
-🔐 Security Group Configuration
-
-Inbound Rules Example:
-
-Protocol	Port	Source
-HTTP	80	0.0.0.0/0
-SSH	22	Your IP
-MySQL	3306	Web ECS CIDR
+| Protocol | Port | Source |
+|---|---|---|
+| HTTP | 80 | 0.0.0.0/0 |
+| SSH | 22 | Your IP |
+| MySQL | 3306 | Web ECS CIDR |
 
 Outbound: allow all (default)
 
-🧩 Architecture Highlights
+---
 
-Service Separation: DB & App nodes run independently
+## 🧩 Architecture Highlights
 
-Scalability: Auto Scaling adjusts ECS count
+- **Service Separation** — DB & App nodes run independently
+- **Scalability** — Auto Scaling adjusts ECS count dynamically
+- **Traffic Distribution** — ELB balances client requests
+- **Observability** — Cloud Eye metrics and logs ensure visibility
+- **Fault Tolerance** — Eliminates dependency on a single instance
 
-Traffic Distribution: ELB balances HTTP requests
+---
 
-Observability: Cloud Eye + logs
+## 📦 Final Result
 
-Fault Tolerance: No single web node dependency
+After completing this lab, you will have:
+
+✔ A scalable multi-ECS LAMP environment  
+✔ Automatic load-balancing and scaling  
+✔ Resource monitoring and metrics visibility  
+✔ Public-facing application endpoint  
+✔ Demonstration of production-grade HA architecture
+
+---
